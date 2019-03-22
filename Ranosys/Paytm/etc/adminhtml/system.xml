@@ -1,0 +1,99 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="paytm" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Ranosys Paytm</label>
+                <field id="title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <config_path>payment/paytm/title</config_path>
+                </field>                
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>payment/paytm/active</config_path>
+                </field>
+                <field id="payment_action" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Generate Invoice Automatically</label>
+                    <source_model>Ranosys\Paytm\Model\PaymentAction</source_model>
+                    <config_path>payment/paytm/payment_action</config_path>
+                </field>
+                <field id="MID" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Merchant Id</label>
+                    <comment>MID provided by Paytm</comment>
+                    <config_path>payment/paytm/MID</config_path>
+                </field>
+                <field id="merchant_key" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Merchant Key</label>
+                    <comment>Merchant Key provided by Paytm</comment>
+                    <config_path>payment/paytm/merchant_key</config_path>
+                </field>
+                    
+                <field id="custom_callbackurl" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Custom Callback Url</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="callback_url" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Callback Url</label>
+                    <comment>Provided By Merchant (hint: https://domainName/paytm/Standard/Response)</comment>
+                    <config_path>payment/paytm/callback_url</config_path>
+                    <depends>
+                        <field id="custom_callbackurl">1</field>
+                    </depends>
+                </field>
+
+                <field id="transaction_url" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Transaction Url</label>
+                    <comment>Use this url for staging : https://securegw-stage.paytm.in/theia/processTransaction</comment>
+                    <config_path>payment/paytm/transaction_url</config_path>
+                </field>
+                <field id="transaction_status_url" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Transaction Status Url</label>
+                    <comment>Use this url for staging : https://securegw-stage.paytm.in/merchant-status/getTxnStatus</comment>
+                    <config_path>payment/paytm/transaction_status_url</config_path>
+                </field>               
+                
+                <field id="Industry_id" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Industry Type Id</label>
+                    <comment>Retail for staging</comment>
+                    <config_path>payment/paytm/Industry_id</config_path>
+                </field>
+                
+                <field id="Channel_Id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Channel Id</label>
+                    <comment>WEB for website</comment>
+                    <config_path>payment/paytm/Channel_Id</config_path>
+                </field>
+                
+                <field id="Website" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Website</label>
+                    <comment>WEBSTAGING for Staging and WEBPROD for Production</comment>
+                    <config_path>payment/paytm/Website</config_path>
+                </field>
+                
+                <field id="order_status" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>New Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
+                    <config_path>payment/paytm/order_status</config_path>
+                </field>
+                          
+                <field id="sort_order" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sort Order</label>
+                    <frontend_class>validate-number</frontend_class>
+                    <config_path>payment/paytm/sort_order</config_path>
+                </field>
+                
+                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                    <config_path>payment/paytm/allowspecific</config_path>
+                </field>
+                
+                <field id="specificcountry" translate="label" type="multiselect" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Payment from Specific Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <config_path>payment/paytm/specificcountry</config_path>
+                </field>               
+            </group>
+        </section>
+    </system>
+</config>
